@@ -17,7 +17,7 @@ Open keyboard shortcut settings and input your settings like this.
 
 
 // Setting the Mark
-{ "key": "ctrl+space",            "command": "emacs.set-mark-command",
+{ "key": "ctrl+space",            "command": "extension.emacs.set-mark-command",
                                      "when": "editorTextFocus" },
 ```
 
@@ -29,12 +29,12 @@ More samples are described in [sample.keyconfig.json](http://github.com/shirou/e
 | Emacs default key | emacs funcname             | vs code func name                | status   |
 |:------------------|:---------------------------|:---------------------------------|:---------|
 | C-/               | undo                       | undo                             | built-in |
-| C-SPC             | set-mark-command           | emacs.set-mark-command           | this     |
-| C-x C-c           | save-buffers-kill-terminal | workbench.action.closeAllEditors | built-in |
+| C-SPC             | set-mark-command           | extension.emacs.set-mark-command | this     |
+| C-x C-c           | save-buffers-kill-terminal | workbench.action.closeAllEditors | bu       |
+ilt-in |
 
 
 Full list of Emacs-VS Code comparison tables is [emacs-vscode-table.md](http://github.com/shirou/emacs-functions/blob/master/emacs-vscode-table.md).
-
 
 
 ## Release Notes

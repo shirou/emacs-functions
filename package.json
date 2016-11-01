@@ -14,14 +14,76 @@
         "emacs"
     ],
     "activationEvents": [
-        "onCommand:emacs.set-mark-command"
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "emacs.set-mark-command",
-            "title": "set mark"
-        }]
+        "commands": [
+            {
+               "command": "extension.emacs.set-mark-command",
+               "title": "set mark"
+            },
+            {
+               "command": "extension.emacs.cancelSelection",
+               "title": "clear mark"
+            },
+            {
+               "command": "extension.emacs.cursorUp",
+                "title": "overwrite build-in cursorUp"
+            },
+            {
+               "command": "extension.emacs.cursorDown",
+                "title": "overwrite build-in cursorDown"
+            },
+            {
+               "command": "extension.emacs.cursorRight",
+                "title": "overwrite build-in cursorRight"
+            },
+            {
+               "command": "extension.emacs.cursorLeft",
+                "title": "overwrite build-in cursorLeft"
+            },
+            {
+               "command": "extension.emacs.cursorHome",
+                "title": "overwrite build-in cursorHome"
+            },
+            {
+               "command": "extension.emacs.cursorEnd",
+                "title": "overwrite build-in cursorEnd"
+            },
+            {
+               "command": "extension.emacs.cursorWordLeft",
+                "title": "overwrite build-in cursorWordLeft"
+            },
+            {
+               "command": "extension.emacs.cursorWordRight",
+                "title": "overwrite build-in cursorWordRight"
+            },
+            {
+               "command": "extension.emacs.scrollPageDown",
+                "title": "overwrite build-in scrollPageDown"
+            },
+            {
+               "command": "extension.emacs.scrollPageUp",
+                "title": "overwrite build-in scrollPageUp"
+            },
+            {
+               "command": "extension.emacs.scrollLineDown",
+                "title": "overwrite build-in scrollLineDown"
+            },
+            {
+               "command": "extension.emacs.scrollLineUp",
+                "title": "overwrite build-in scrollLineUp"
+            },
+            {
+               "command": "extension.emacs.cursorTop",
+                "title": "overwrite build-in cursorTop"
+            },
+            {
+               "command": "extension.emacs.cursorBottom",
+                "title": "overwrite build-in cursorBottom"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
@@ -29,7 +91,7 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
+        "typescript": "^2.0.6",
         "vscode": "^1.0.0",
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
@@ -40,5 +102,5 @@
 		"type": "git",
 		"url": "https://github.com/shirou/emacs-functions.git"
 	},
-    "preview": true,
+    "preview": true
 }

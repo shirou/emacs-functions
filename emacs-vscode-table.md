@@ -7,6 +7,7 @@ status meaning
 
 - built-in: vscode already has same(or nearly) function
 - this: This *emacs-functions extension* provide function.
+- overwrite: This *emacs-function extension* overwrite built-in extension with extension.emacs namespace.
 - blank: not yet reaseached. PR is always welcome!
 
 ## 6 Exiting Emacs
@@ -23,39 +24,39 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Exiting.html#Exiting
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Moving-Point.html#Moving-Point
 
-| Emacs default key | emacs funcname                 | vs code func name | status   |
-|:------------------|:-------------------------------|:------------------|:---------|
-| C-f               | forward-char                   | cursorRight       | built-in |
-| RIGHT             | right-char                     | cursorRight       | built-in |
-| C-b               | backward-char                  | cursorLeft        | built-in |
-| LEFT              | left-char                      | cursorLeft        | built-in |
-| C-n/DOWN          | next-line                      | cursorUp          | built-in |
-| C-p/UP            | previous-line                  | cursorDown        | built-in |
-| C-a/Home          | move-beginning-of-line         | cursorHome        | built-in |
-| C-e/End           | move-end-of-line               | cursorEnd         | built-in |
-| M-f               | forward-word                   | cursorWordRight   | built-in |
-| C-RIGHT/M-RIGHT   | right-word                     | cursorWordRight   | built-in |
-| M-b               | backward-word                  | cursorWordLeft    | built-in |
-| C-LEFT/M-LEFT     | left-word                      | cursorWordLeft    | built-in |
-| M-r               | move-to-window-line-top-bottom |                   |          |
-| M-<               | beginning-of-buffer            | cursorTop         | built-in |
-| M->               | end-of-buffer                  | cursorDown        | built-in |
-| C-v/PageDown/next | scroll-up-command              | cursorPageUp      | built-in |
-| M-v/PageUp/prior  | scroll-down-command            | cursorPageDown    | built-in |
+| Emacs default key | emacs funcname                 | vs code func name               | status    |
+|:------------------|:-------------------------------|:--------------------------------|:----------|
+| C-f               | forward-char                   | extension.emacs.cursorRight     | overwrite |
+| RIGHT             | right-char                     | extension.emacs.cursorRight     | overwrite |
+| C-b               | backward-char                  | extension.emacs.cursorLeft      | overwrite |
+| LEFT              | left-char                      | extension.emacs.cursorLeft      | overwrite |
+| C-n/DOWN          | next-line                      | extension.emacs.cursorUp        | overwrite |
+| C-p/UP            | previous-line                  | extension.emacs.cursorDown      | overwrite |
+| C-a/Home          | move-beginning-of-line         | extension.emacs.cursorHome      | overwrite |
+| C-e/End           | move-end-of-line               | extension.emacs.cursorEnd       | overwrite |
+| M-f               | forward-word                   | extension.emacs.cursorWordRight | overwrite |
+| C-RIGHT/M-RIGHT   | right-word                     | extension.emacs.cursorWordRight | overwrite |
+| M-b               | backward-word                  | extension.emacs.cursorWordLeft  | overwrite |
+| C-LEFT/M-LEFT     | left-word                      | extension.emacs.cursorWordLeft  | overwrite |
+| M-r               | move-to-window-line-top-bottom |                                 |           |
+| M-<               | beginning-of-buffer            | extension.emacs.cursorTop       | overwrite |
+| M->               | end-of-buffer                  | extension.emacs.cursorDown      | overwrite |
+| C-v/PageDown/next | scroll-up-command              | extension.emacs.cursorPageUp    | overwrite |
+| M-v/PageUp/prior  | scroll-down-command            | extension.emacs.cursorPageDown  | overwrite |
 
 
 ## 7.3 Erasing Text
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Erasing.html#Erasing
 
-| Emacs default key | emacs funcname       | vs code func name        | status   |
-|:------------------|:---------------------|:-------------------------|:---------|
-| DEL/BACKSPACE     | delete-backward-char | deleteLeft               | built-in |
-| Delete            | delete-forward-char  | deleteRight              | built-in |
-| C-d               | delete-char          | emacs.delete-char        | this     |
-| C-k               | kill-line            | emacs.kill-line          | this     |
-| M-d               | kill-word            | emacs.kill-word          | this     |
-| M-DEL             | backward-kill-word   | emacs.backward-kill-word | this     |
+| Emacs default key | emacs funcname       | vs code func name                  | status   |
+|:------------------|:---------------------|:-----------------------------------|:---------|
+| DEL/BACKSPACE     | delete-backward-char | deleteLeft                         | built-in |
+| Delete            | delete-forward-char  | deleteRight                        | built-in |
+| C-d               | delete-char          | extension.emacs.delete-char        | this     |
+| C-k               | kill-line            | extension.emacs.kill-line          | this     |
+| M-d               | kill-word            | extension.emacs.kill-word          | this     |
+| M-DEL             | backward-kill-word   | extension.emacs.backward-kill-word | this     |
 
 ## 7.4 Undoing Changes
 
@@ -73,12 +74,13 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Undo.html#Basic-
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Setting-Mark.html#Setting-Mark
 
-| Emacs default key | emacs funcname          | vs code func name      | status |
-|:------------------|:------------------------|:-----------------------|:-------|
-| C-SPC             | set-mark-command        | emacs.set-mark-command | this   |
-| C-@               | The same                | The same               | this   |
-| C-x C-x           | exchange-point-and-mark |                        | no     |
-| mouse-3           | mouse-save-then-kill    |                        | no     |
+| Emacs default key | emacs funcname          | vs code func name               | status |
+|:------------------|:------------------------|:--------------------------------|:-------|
+| C-SPC             | set-mark-command        | emacs.set-mark-command          | this   |
+| C-@               | The same                | The same                        | this   |
+| C-x C-x           | exchange-point-and-mark |                                 | no     |
+| mouse-3           | mouse-save-then-kill    |                                 | no     |
+| C-g               |                         | extension.emacs.cancelSelection | this   |
 
 
 ## 12.2 Yanking

@@ -1,3 +1,3 @@
 'use strict';
 
-export const ExtPrefix = "emacs";
+export const ExtPrefix = "extension.emacs";

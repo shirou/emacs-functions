@@ -15,19 +15,23 @@ export function activateMark(context: vscode.ExtensionContext) {
     context.subscriptions.push(markHandler);
     context.subscriptions.push(disposable);
 
-    var supportedCursorMoves: string[] = ["cursorUp", "cursorDown", "cursorLeft", "cursorRight",
+    var supportedCursorMoves: string[] = [
+        "cursorUp", "cursorDown", "cursorLeft", "cursorRight",
         "cursorHome", "cursorEnd",
         "cursorWordLeft", "cursorWordRight",
         "scrollPageDown", "scrollPageUp",
         "scrollLineDown", "scrollLineUp",
         "cursorTop", "cursorBottom"];
-        
-     // overwrite
-     supportedCursorMoves.forEach((cursorMove) => {
-        context.subscriptions.push(vscode.commands.registerCommand(cursorMove,
-            (context) => vscode.commands.executeCommand(markHandler.isMarkMode() ? cursorMove+"Select": cursorMove)))
-     });
 
+    // overwrite built-in functions
+    supportedCursorMoves.forEach((cursorMove) => {
+       context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + '.' + cursorMove,
+           (context) => vscode.commands.executeCommand(markHandler.isMarkMode() ? cursorMove+"Select": cursorMove)))
+    });
+    context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".cancelSelection", (context) => {
+        markHandler.clearMark();
+        vscode.commands.executeCommand("cancelSelection"); 
+    }));
 }
 
 class MarkHandler {
@@ -36,6 +40,13 @@ class MarkHandler {
     public isMarkMode() {
         return this.state;
     }
+    public clearMark() {
+        this.state = false;
+        let editor = vscode.window.activeTextEditor;
+        const here = editor.selection.active;
+        this.posit = here;
+        editor.selection = new vscode.Selection(here, here);
+   }
     public mark(pos: vscode.Position) {
         switch (this.state) {
             //add mark
