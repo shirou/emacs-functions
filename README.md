@@ -21,7 +21,7 @@ Open keyboard shortcut settings and input your settings like this.
                                      "when": "editorTextFocus" },
 ```
 
-More samples are described in [sample.keyconfig.json](http://github.com/shirou/emacs-functions/blob/msater/sample.keyconfig.json).
+More samples are described in [sample.keyconfig.json](http://github.com/shirou/emacs-functions/blob/master/sample.keyconfig.json).
 
 ## Emacs comparison
 
@@ -33,7 +33,7 @@ More samples are described in [sample.keyconfig.json](http://github.com/shirou/e
 | C-x C-c           | save-buffers-kill-terminal | workbench.action.closeAllEditors | built-in |
 
 
-Full list of Emacs-VS Code comparison tables is [emacs-vscode-table.md](http://github.com/shirou/emacs-functions/blob/msater/emacs-vscode-table.md).
+Full list of Emacs-VS Code comparison tables is [emacs-vscode-table.md](http://github.com/shirou/emacs-functions/blob/master/emacs-vscode-table.md).
 
 
 
