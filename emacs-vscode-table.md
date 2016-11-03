@@ -8,7 +8,7 @@ status meaning
 - built-in: vscode already has same(or nearly) function
 - this: This *emacs-functions extension* provide function.
 - overwrite: This *emacs-function extension* overwrite built-in extension with extension.emacs namespace.
-- blank: not yet reaseached. PR is always welcome!
+- blank: not yet researched. PR is always welcome!
 
 ## 6 Exiting Emacs
 
@@ -69,18 +69,17 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Undo.html#Basic-
 | C-_               | The same       | The same          | built-in |
 
 
-
 ## 11.1 Setting the Mark
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Setting-Mark.html#Setting-Mark
 
-| Emacs default key | emacs funcname          | vs code func name               | status |
-|:------------------|:------------------------|:--------------------------------|:-------|
-| C-SPC             | set-mark-command        | emacs.set-mark-command          | this   |
-| C-@               | The same                | The same                        | this   |
-| C-x C-x           | exchange-point-and-mark |                                 | no     |
-| mouse-3           | mouse-save-then-kill    |                                 | no     |
-| C-g               |                         | extension.emacs.cancelSelection | this   |
+| Emacs default key | emacs funcname          | vs code func name                | status |
+|:------------------|:------------------------|:---------------------------------|:-------|
+| C-SPC             | set-mark-command        | extension.emacs.set-mark-command | this   |
+| C-@               | The same                | The same                         | this   |
+| C-x C-x           | exchange-point-and-mark |                                  |        |
+| mouse-3           | mouse-save-then-kill    |                                  |        |
+| C-g               |                         | extension.emacs.cancelSelection  | this   |
 
 
 ## 12.2 Yanking
@@ -88,12 +87,13 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Setting-Mark.html#Sett
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Yanking.html
 
 
-| Emacs default key | emacs funcname   | vs code func name | status  |
-|:------------------|:-----------------|:------------------|:--------|
-| C-y               | yank             |                   | bult-in |
-| M-y               | yank-pop         |                   |         |
-| C-M-w             | append-next-kill |                   |         |
-
+| Emacs default key | emacs funcname   | vs code func name              | status |
+|:------------------|:-----------------|:-------------------------------|:-------|
+| C-y               | yank             | extension.emacs.yank           | this   |
+| M-y               | yank-pop         |                                | this   |
+| C-M-w             | append-next-kill |                                | this   |
+| C-w               | kill-region      | extension.emacs.kill-region    | this   |
+| M-w               | kill-ring-save   | extension.emacs.kill-ring-save | this   |
 
 ### 18.2 Visiting Files
 

@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 
-import { ExtPrefix } from './constants'; 
+import { ExtPrefix } from './constants';
 
 // original : ericmccarthy7 VS Code Mark/Point
 
@@ -19,6 +19,7 @@ export function activateMark(context: vscode.ExtensionContext) {
         "cursorUp", "cursorDown", "cursorLeft", "cursorRight",
         "cursorHome", "cursorEnd",
         "cursorWordLeft", "cursorWordRight",
+        "cursorPageDown", "cursorPageUp",
         "scrollPageDown", "scrollPageUp",
         "scrollLineDown", "scrollLineUp",
         "cursorTop", "cursorBottom"];
@@ -30,7 +31,7 @@ export function activateMark(context: vscode.ExtensionContext) {
     });
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".cancelSelection", (context) => {
         markHandler.clearMark();
-        vscode.commands.executeCommand("cancelSelection"); 
+        vscode.commands.executeCommand("cancelSelection");
     }));
 }
 
