@@ -30,6 +30,7 @@
         "@types/mocha": "^2.2.32"
     },
     "homepage": "https://github.com/shirou/emacs-functions/blob/master/README.md",
+    "bugs": "https://github.com/shirou/emacs-functions/issues",
     "repository": {
         "type": "git",
         "url": "https://github.com/shirou/emacs-functions.git"
