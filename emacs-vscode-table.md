@@ -2,7 +2,6 @@
 
 Based on *The Emacs Editor* manual. https://www.gnu.org/software/emacs/manual/
 
-
 status meaning
 
 - built-in: vscode already has same(or nearly) function
