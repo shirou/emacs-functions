@@ -69,6 +69,15 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Undo.html#Basic-
 | C-_               | The same       | The same          | built-in |
 
 
+## 7.5 Files
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Files.html#Basic-Files
+
+| Emacs default key | emacs funcname | vs code func name           | status   |
+|:------------------|:---------------|:----------------------------|:---------|
+| C-x C-s           | save-buffer    | workbench.action.files.save | built-in |
+
+
 ## 11.1 Setting the Mark
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Setting-Mark.html#Setting-Mark
@@ -95,7 +104,17 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Yanking.html
 | C-w               | kill-region      | extension.emacs.kill-region    | this   |
 | M-w               | kill-ring-save   | extension.emacs.kill-ring-save | this   |
 
-### 18.2 Visiting Files
+## 15.1 Incremental Search
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.html#Incremental-Search
+
+| Emacs default key | emacs funcname   | vs code func name | status   |
+|:------------------|:-----------------|:------------------|:---------|
+| C-s               | isearch-forward  | actions.find      | built-in |
+| C-r               | isearch-backward |                   |          |
+
+
+## 18.2 Visiting Files
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Visiting.html#Visiting
 
@@ -106,3 +125,33 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Visiting.html#Visiting
 | C-x C-v           | find-alternate-file    |                                       |          |
 | C-x 4 f           | find-file-other-window |                                       |          |
 | C-x 5 f           | find-file-other-frame  |                                       |          |
+
+## 19.2 Listing Existing Buffers
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/List-Buffer
+
+| Emacs default key | emacs funcname | vs code func name | status |
+|:------------------|:---------------|:------------------|:-------|
+| C-x C-b           | list-buffers   |                   |        |
+| C-x C-q           | read-only-mode |                   |        |
+| C-x k             | kill-buffer    |                   |        |
+
+
+## 20.2 Spilitting Windows
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Split-Window.html#Split-Window
+
+| Emacs default key | emacs funcname       | vs code func name                  | status   |
+|:------------------|:---------------------|:-----------------------------------|:---------|
+| C-x 0             | delete-window        | workbench.action.closeActiveEditor | built-in |
+| C-x 1             | delete-other-windows |                                    |          |
+| C-x 2             | split-window-below   | workbench.action.splitEditor       | built-in |
+| C-x 3             | split-window-right   |                                    |          |
+
+
+## misc
+
+| Emacs default key | emacs funcname                | vs code func name             | status   |
+|:------------------|:------------------------------|:------------------------------|:---------|
+| C-j               | new-line                      | editor.action.insertLineAfter | built-in |
+| C-d               | editor.action.insertLineAfter | deleteLeft                    | built-in |

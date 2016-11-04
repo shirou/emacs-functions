@@ -30,10 +30,10 @@
         "@types/mocha": "^2.2.32"
     },
     "homepage": "https://github.com/shirou/emacs-functions/blob/master/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/shirou/emacs-functions.git"
-	},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shirou/emacs-functions.git"
+    },
     "preview": true,
     "contributes": {
         "commands": [
@@ -127,182 +127,182 @@
             }
      ],
       "keybindings": [
-		{
+        {
           "command": "extension.emacs.set-mark-command",
           "key": "ctrl+space",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+f",
+        },
+        {
+          "key": "ctrl+f",
           "command": "extension.emacs.cursorRight",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "right",
+        },
+        {
+          "key": "right",
           "command": "extension.emacs.cursorRight",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+b",
+        },
+        {
+          "key": "ctrl+b",
           "command": "extension.emacs.cursorLeft",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "left",
+        },
+        {
+          "key": "left",
           "command": "extension.emacs.cursorLeft",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+n",
+        },
+        {
+          "key": "ctrl+n",
           "command": "extension.emacs.cursorDown",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "down",
+        },
+        {
+          "key": "down",
           "command": "extension.emacs.cursorDown",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+p",
+        },
+        {
+          "key": "ctrl+p",
           "command": "extension.emacs.cursorUp",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "up",
+        },
+        {
+          "key": "up",
           "command": "extension.emacs.cursorUp",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+a",
+        },
+        {
+          "key": "ctrl+a",
           "command": "extension.emacs.cursorHome",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "home",
+        },
+        {
+          "key": "home",
           "command": "extension.emacs.cursorHome",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+e",
+        },
+        {
+          "key": "ctrl+e",
           "command": "extension.emacs.cursorEnd",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "end",
+        },
+        {
+          "key": "end",
           "command": "extension.emacs.cursorEnd",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+[ f",
+        },
+        {
+          "key": "ctrl+[ f",
           "command": "extension.emacs.cursorWordRight",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+right",
+        },
+        {
+          "key": "ctrl+right",
           "command": "extension.emacs.cursorWordRight",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+[ b",
+        },
+        {
+          "key": "ctrl+[ b",
           "command": "extension.emacs.cursorWordLeft",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+left",
+        },
+        {
+          "key": "ctrl+left",
           "command": "extension.emacs.cursorWordLeft",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+[ shift+,",
+        },
+        {
+          "key": "ctrl+[ shift+,",
           "command": "extension.emacs.cursorTop",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+[ shift+.",
+        },
+        {
+          "key": "ctrl+[ shift+.",
           "command": "extension.emacs.cursorBottom",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+left",
+        },
+        {
+          "key": "ctrl+left",
           "command": "extension.emacs.cursorWordLeft",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+v",
+        },
+        {
+          "key": "ctrl+v",
           "command": "extension.emacs.cursorPageDown",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+[ v",
+        },
+        {
+          "key": "ctrl+[ v",
           "command": "extension.emacs.cursorPageUp",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "backspace",
+        },
+        {
+          "key": "backspace",
           "command": "deleteLeft",
           "when": "editorTextFocus && !editorReadonly"
-		},
-		{
-		  "key": "delete",
+        },
+        {
+          "key": "delete",
           "command": "deleteRight",
           "when": "editorTextFocus && !editorReadonly"
-		},
-		{
-		  "key": "ctrl+/",
+        },
+        {
+          "key": "ctrl+/",
           "command": "undo",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+x u",
+        },
+        {
+          "key": "ctrl+x u",
           "command": "undo",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+_",
+        },
+        {
+          "key": "ctrl+_",
           "command": "undo",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+space",
+        },
+        {
+          "key": "ctrl+space",
           "command": "extension.emacs.set-mark-command",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+x ctrl+f",
+        },
+        {
+          "key": "ctrl+x ctrl+f",
           "command": "workbench.action.files.openFileFolder",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+x ctrl+k",
-		  "command": "workbench.action.closeActiveEditor",
+        },
+        {
+          "key": "ctrl+x ctrl+k",
+          "command": "workbench.action.closeActiveEditor",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+y",
-		  "command": "extension.emacs.yank",
+        },
+        {
+          "key": "ctrl+y",
+          "command": "extension.emacs.yank",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "ctrl+w",
-		  "command": "extension.emacs.kill-region",
+        },
+        {
+          "key": "ctrl+w",
+          "command": "extension.emacs.kill-region",
           "when": "editorTextFocus"
-		},
-		{
-		  "key": "meta+w",
-		  "command": "extension.emacs.kill-ring-save",
-      "when": "editorTextFocus"
-		},
-    {
-      "key": "ctrl-k",
-      "command": "extension.emacs.kill-line"
-    },
-    { 
-      "key": "ctrl+x ctrl+s",
-      "command": "workbench.action.files.save",
-      "when": "editorTextFocus"
-     },
-     { 
-      "key": "ctrl+h",
+        },
+        {
+          "key": "meta+w",
+          "command": "extension.emacs.kill-ring-save",
+          "when": "editorTextFocus"
+        },
+        {
+          "key": "ctrl-k",
+          "command": "extension.emacs.kill-line"
+        },
+        {
+          "key": "ctrl+x ctrl+s",
+          "command": "workbench.action.files.save",
+          "when": "editorTextFocus"
+        },
+        {
+          "key": "ctrl+h",
           "command": "deleteLeft",
           "when": "editorTextFocus"
         },
@@ -311,11 +311,33 @@
           "command":"actions.find",
           "when": "editorTextFocus"
         },
-        { 
+        {
           "key": "ctrl+j",
           "command": "editor.action.insertLineAfter",
           "when": "editorTextFocus && !editorReadonly"
-        }
+        },
+		{
+		  "key": "ctrl+x 0",
+          "command": "workbench.action.closeActiveEditor"
+		},
+		{
+		  "key": "ctrl+x 0",
+          "command": "workbench.action.closeWindow",
+          "when": "!editorIsOpen"
+		},
+		{
+		  "key": "ctrl+x k",
+          "command": "workbench.action.closeActiveEditor"
+		},
+		{
+		  "key": "ctrl+x k",
+          "command": "workbench.action.closeWindow",
+          "when": "!editorIsOpen"
+		},
+		{
+		  "key": "ctrl+x 2",
+		  "command": "workbench.action.splitEditor"
+		}
       ]
     }
 }
