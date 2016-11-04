@@ -53,10 +53,10 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Erasing.html#Erasing
 |:------------------|:---------------------|:-----------------------------------|:---------|
 | DEL/BACKSPACE     | delete-backward-char | deleteLeft                         | built-in |
 | Delete            | delete-forward-char  | deleteRight                        | built-in |
-| C-d               | delete-char          | extension.emacs.delete-char        | this     |
+| C-d               | delete-char          | deleteRight                        | built-in |
 | C-k               | kill-line            | extension.emacs.kill-line          | this     |
-| M-d               | kill-word            | extension.emacs.kill-word          | this     |
-| M-DEL             | backward-kill-word   | extension.emacs.backward-kill-word | this     |
+| M-d               | kill-word            |                                    |          |
+| M-DEL             | backward-kill-word   |                                    |          |
 
 ## 7.4 Undoing Changes
 
@@ -90,8 +90,8 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Yanking.html
 | Emacs default key | emacs funcname   | vs code func name              | status |
 |:------------------|:-----------------|:-------------------------------|:-------|
 | C-y               | yank             | extension.emacs.yank           | this   |
-| M-y               | yank-pop         |                                | this   |
-| C-M-w             | append-next-kill |                                | this   |
+| M-y               | yank-pop         |                                |        |
+| C-M-w             | append-next-kill |                                |        |
 | C-w               | kill-region      | extension.emacs.kill-region    | this   |
 | M-w               | kill-ring-save   | extension.emacs.kill-ring-save | this   |
 

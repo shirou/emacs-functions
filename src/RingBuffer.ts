@@ -35,6 +35,12 @@ export class RingBuffer {
     }
     return v
   }
+  last() {
+    if (this.head === -1){
+      return ""
+    }
+    return this.get(this.head);
+  }
 
   private set(p: number, v: string){
     this.buffer[this.mod(p)] = v

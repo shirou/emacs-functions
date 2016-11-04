@@ -120,8 +120,12 @@
             {
                "command": "extension.emacs.kill-ring-save",
                 "title": "kill-ring-save"
+            },
+            {
+               "command": "extension.emacs.kill-line",
+                "title": "kill-line"
             }
-        ],
+     ],
       "keybindings": [
 		{
           "command": "extension.emacs.set-mark-command",
@@ -235,12 +239,12 @@
 		},
 		{
 		  "key": "backspace",
-          "command": "extension.emacs.deleteLeft",
+          "command": "deleteLeft",
           "when": "editorTextFocus && !editorReadonly"
 		},
 		{
 		  "key": "delete",
-          "command": "extension.emacs.deleteRight",
+          "command": "deleteRight",
           "when": "editorTextFocus && !editorReadonly"
 		},
 		{
@@ -286,8 +290,32 @@
 		{
 		  "key": "meta+w",
 		  "command": "extension.emacs.kill-ring-save",
+      "when": "editorTextFocus"
+		},
+    {
+      "key": "ctrl-k",
+      "command": "extension.emacs.kill-line"
+    },
+    { 
+      "key": "ctrl+x ctrl+s",
+      "command": "workbench.action.files.save",
+      "when": "editorTextFocus"
+     },
+     { 
+      "key": "ctrl+h",
+          "command": "deleteLeft",
           "when": "editorTextFocus"
-		}
-	  ]
+        },
+        {
+          "key":"ctrl+s",
+          "command":"actions.find",
+          "when": "editorTextFocus"
+        },
+        { 
+          "key": "ctrl+j",
+          "command": "editor.action.insertLineAfter",
+          "when": "editorTextFocus && !editorReadonly"
+        }
+      ]
     }
 }
