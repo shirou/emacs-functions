@@ -258,7 +258,7 @@
           "when": "editorTextFocus"
         },
         {
-          "key": "ctrl+_",
+          "key": "ctrl+shift+-",
           "command": "undo",
           "when": "editorTextFocus"
         },
@@ -310,6 +310,21 @@
           "key":"ctrl+s",
           "command":"actions.find",
           "when": "editorTextFocus"
+        },
+		{
+          "key": "ctrl+s",
+          "command": "editor.action.nextMatchFindAction",
+          "when": "findWidgetVisible"
+        },
+		{
+          "key": "ctrl+r",
+          "command": "actions.find",
+          "when": "!findWidgetVisible"
+        },
+		{
+          "key": "ctrl+r",
+          "command": "editor.action.previousMatchFindAction",
+          "when": "findWidgetVisible"
         },
         {
           "key": "ctrl+j",

@@ -111,7 +111,7 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.htm
 | Emacs default key | emacs funcname   | vs code func name | status   |
 |:------------------|:-----------------|:------------------|:---------|
 | C-s               | isearch-forward  | actions.find      | built-in |
-| C-r               | isearch-backward |                   |          |
+| C-r               | isearch-backward | actions.find      | built-in |
 
 
 ## 18.2 Visiting Files
