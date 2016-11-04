@@ -289,7 +289,7 @@
           "when": "editorTextFocus"
         },
         {
-          "key": "meta+w",
+          "key": "ctrl+[ w",
           "command": "extension.emacs.kill-ring-save",
           "when": "editorTextFocus"
         },

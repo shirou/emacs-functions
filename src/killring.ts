@@ -9,32 +9,32 @@ export function activateKillring(context: vscode.ExtensionContext) {
     let kr = new KillRing()
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
-        const length = kr.yank();    
-        const promises = [
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection"),
-            vscode.commands.executeCommand("cursorMove", {
-                to: "right",
-                by: "character",
-                value: length,
-            }),
-        ];
-        Promise.all(promises).then(() => {
-            // TODO: why dosn't move line end on multiple line yank?
+        vscode.commands.executeCommand("editor.action.clipboardPasteAction")
+        .then(()=>{
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
         });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
-        kr.cut();    
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        vscode.commands.executeCommand("editor.action.clipboardCutAction")
+        .then(() => {
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-ring-save", () => {
-        kr.copy();
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        vscode.commands.executeCommand("editor.action.clipboardCopyAction")
+        .then(() => {
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-line", () => {
-        const active = vscode.window.activeTextEditor.selection.active;
-        const range = new vscode.Range(active, new vscode.Position(active.line + 1, 0));
-        kr.cut(range);    
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
+        .then(() => {
+            vscode.commands.executeCommand("cursorEndSelect")
+        }).then(() => {
+            vscode.commands.executeCommand("editor.action.clipboardCutAction");
+        }).then(() => {
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        });
     }));
 }
 
@@ -63,7 +63,6 @@ class KillRing {
     }
 
     cut(range: vscode.Range = null): boolean { 
-        console.log(this.killRing);
         if (range === null){
             range = this.getSelectionRange();
         } 
