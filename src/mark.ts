@@ -43,12 +43,10 @@ class MarkHandler {
     }
     public clearMark() {
         this.state = false;
-        /*
         let editor = vscode.window.activeTextEditor;
         const here = editor.selection.active;
         this.posit = here;
         editor.selection = new vscode.Selection(here, here);
-        */
    }
     public mark(pos: vscode.Position) {
         switch (this.state) {

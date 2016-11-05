@@ -76,9 +76,10 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Undo.html#Basic-
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Files.html#Basic-Files
 
-| Emacs default key | emacs funcname | vs code func name           | status   |
-|:------------------|:---------------|:----------------------------|:---------|
-| C-x C-s           | save-buffer    | workbench.action.files.save | built-in |
+| Emacs default key | emacs funcname | vs code func name             | status   |
+|:------------------|:---------------|:------------------------------|:---------|
+| C-x C-s           | save-buffer    | workbench.action.files.save   | built-in |
+| C-x C-w           | save-as        | workbench.action.files.saveAs | build-in |
 
 
 ## 11.1 Setting the Mark

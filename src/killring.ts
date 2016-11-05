@@ -15,9 +15,13 @@ export function activateKillring(context: vscode.ExtensionContext) {
         });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
+        const pos = vscode.window.activeTextEditor.selection;
+        if (pos.isEmpty) {
+            return;
+        }
         vscode.commands.executeCommand("editor.action.clipboardCutAction")
         .then(() => {
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+//            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection"); // TODO: if enable, delete while line. why? 
         });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-ring-save", () => {
@@ -31,9 +35,11 @@ export function activateKillring(context: vscode.ExtensionContext) {
         .then(() => {
             vscode.commands.executeCommand("cursorEndSelect")
         }).then(() => {
+            vscode.commands.executeCommand("cursorRightSelect")
+        }).then(() => {
             vscode.commands.executeCommand("editor.action.clipboardCutAction");
         }).then(() => {
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+            // vscode.commands.executeCommand(ExtPrefix + ".cancelSelection"); // TODO: 
         });
     }));
 }

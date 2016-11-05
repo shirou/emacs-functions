@@ -2,7 +2,7 @@
     "name": "emacs-functions",
     "displayName": "emacs-functions",
     "description": "Emacs basic functions",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "rrudi",
     "engines": {
         "vscode": "^1.5.0"
@@ -294,12 +294,17 @@
           "when": "editorTextFocus"
         },
         {
-          "key": "ctrl-k",
+          "key": "ctrl+k",
           "command": "extension.emacs.kill-line"
         },
         {
           "key": "ctrl+x ctrl+s",
           "command": "workbench.action.files.save",
+          "when": "editorTextFocus"
+        },
+        {
+          "key": "ctrl+x ctrl+w",
+          "command": "workbench.action.files.saveAs",
           "when": "editorTextFocus"
         },
         {
