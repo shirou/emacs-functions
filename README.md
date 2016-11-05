@@ -94,6 +94,7 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Setting-Mark.html#Sett
 | mouse-3           | mouse-save-then-kill    |                                  |        |
 | C-g               |                         | extension.emacs.cancelSelection  | this   |
 
+note: C-g cancel not only TextFocus but also other window.
 
 ## 12.2 Yanking
 
@@ -134,11 +135,11 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Visiting.html#Visiting
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/List-Buffer
 
-| Emacs default key | emacs funcname | vs code func name | status |
-|:------------------|:---------------|:------------------|:-------|
-| C-x C-b           | list-buffers   |                   |        |
-| C-x C-q           | read-only-mode |                   |        |
-| C-x k             | kill-buffer    |                   |        |
+| Emacs default key | emacs funcname | vs code func name                                        | status |
+|:------------------|:---------------|:---------------------------------------------------------|:-------|
+| C-x C-b           | list-buffers   | workbench.action.toggleSidebarVisibility                 |        |
+| C-x C-q           | read-only-mode |                                                          |        |
+| C-x k             | kill-buffer    | workbench.action.closeActiveEditor                       |        |
 
 
 ## 20.2 Spilitting Windows
@@ -148,10 +149,22 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Split-Window.html#Spli
 | Emacs default key | emacs funcname       | vs code func name                  | status   |
 |:------------------|:---------------------|:-----------------------------------|:---------|
 | C-x 0             | delete-window        | workbench.action.closeActiveEditor | built-in |
-| C-x 1             | delete-other-windows |                                    |          |
+| C-x 1             | delete-other-windows | workbench.action.closeOtherEditors | built-in |
 | C-x 2             | split-window-below   | workbench.action.splitEditor       | built-in |
 | C-x 3             | split-window-right   |                                    |          |
 
+
+## 24.1 Indentation Commands
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Indentation-Commands.html
+
+| Emacs default key | emacs funcname      | vs code func name                   | status   |
+|:------------------|:--------------------|:------------------------------------|:---------|
+| C-M-o             | split-line          |                                     |          |
+| M-m               | back-to-indentation | extension.emacs.back-to-indentation |          |
+| M-i               | tab-to-tab-stop     |                                     |          |
+| M-^               | delete-indentation  |                                     |          |
+| C-M-\             | indent-region       | editor.action.indentLines           | built-in |
 
 ## misc
 

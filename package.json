@@ -2,7 +2,7 @@
     "name": "emacs-functions",
     "displayName": "emacs-functions",
     "description": "Emacs basic functions",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "publisher": "rrudi",
     "engines": {
         "vscode": "^1.5.0"
@@ -347,6 +347,10 @@
           "when": "!editorIsOpen"
 		},
 		{
+		  "key": "ctrl+x 1",
+          "command": "workbench.action.closeOtherEditors"
+		},
+		{
 		  "key": "ctrl+x k",
           "command": "workbench.action.closeActiveEditor"
 		},
@@ -355,10 +359,29 @@
           "command": "workbench.action.closeWindow",
           "when": "!editorIsOpen"
 		},
+    {
+      "key": "ctrl+x b",
+      "command": "workbench.action.toggleSidebarVisibility"
+    },
 		{
 		  "key": "ctrl+x 2",
 		  "command": "workbench.action.splitEditor"
 		},
+		{
+		  "key": "ctrl+x 2",
+		  "command": "workbench.action.splitEditor"
+		},
+    {
+       "key": "ctrl+alt+\\",
+       "command": "editor.action.indentLines",
+       "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+       "key": "ctrl+[ m",
+       "command": "extension.emacs.back-to-indentation",
+       "when": "editorTextFocus"
+    },
+
 		{ "key": "ctrl+g",                "command": "editor.action.clearoutput"},
 		{ "key": "ctrl+g",                "command": "extension.emacs.cancelSelection",
           "when": "editorHasSelection && editorTextFocus" },
@@ -390,4 +413,6 @@
           "when": "globalMessageVisible" }
       ]
     }
+
+
 }
