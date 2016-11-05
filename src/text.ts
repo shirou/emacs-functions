@@ -11,7 +11,6 @@ export function activateText(context: vscode.ExtensionContext) {
         const line = editor.document.lineAt(pos.line);
         const n = new vscode.Position(pos.line, line.firstNonWhitespaceCharacterIndex);
         editor.selection = new vscode.Selection(n, n);
-        }));
-
+    }));
 }
 
