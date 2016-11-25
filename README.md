@@ -109,6 +109,17 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Yanking.html
 | C-w               | kill-region      | extension.emacs.kill-region    | this   |
 | M-w               | kill-ring-save   | extension.emacs.kill-ring-save | this   |
 
+## 14.2 Recentering
+
+https://www.gnu.org/software/emacs/manual/html_node/emacs/Recentering.html
+
+| Emacs default key | emacs funcname      | vs code func name        | status |
+|:------------------|:--------------------|:-------------------------|:-------|
+| C-l               | recenter-top-bottom | extension.emacs.recenter | this   |
+
+Thank you https://github.com/finalclass/vscode-keyboard-scroll
+
+
 ## 15.1 Incremental Search
 
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Incremental-Search.html#Incremental-Search
@@ -186,3 +197,4 @@ MIT
 
 - marking point: ericmccarthy7 VS Code Mark/Point
 - yanking: https://github.com/hiro-sun/vscode-emacs
+- keyboard-scroll https://github.com/finalclass/vscode-keyboard-scroll

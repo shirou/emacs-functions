@@ -125,6 +125,10 @@
             {
                "command": "extension.emacs.kill-line",
                 "title": "kill-line"
+            },
+            {
+               "command": "extension.emacs.recenter",
+                "title": "recenter-top-bottom"
             }
      ],
       "keybindings": [
@@ -304,6 +308,11 @@
           "when": "editorTextFocus"
         },
         {
+          "key": "ctrl+l",
+          "command": "extension.emacs.recenter",
+          "when": "editorTextFocus"
+        },
+        {
           "key": "ctrl+k",
           "command": "extension.emacs.kill-line"
         },
@@ -346,11 +355,6 @@
           "key": "ctrl+j",
           "command": "editor.action.insertLineAfter",
           "when": "editorTextFocus && !editorReadonly"
-        },
-        {
-          "key": "ctrl+l",
-          "command": "workbench.action.reloadWindow",
-          "when": "editorTextFocus"
         },
 		{
 		  "key": "ctrl+x 0",
