@@ -5,41 +5,41 @@ import { ExtPrefix, BufferSize } from './constants';
 
 import { RingBuffer } from './RingBuffer';
 
+var ncp = require("copy-paste");
+
 export function activateKillring(context: vscode.ExtensionContext) {
     let kr = new KillRing()
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
-        vscode.commands.executeCommand("editor.action.clipboardPasteAction")
-        .then(()=>{
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
-        });
+        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        kr.yank();
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
         const pos = vscode.window.activeTextEditor.selection;
         if (pos.isEmpty) {
             return;
         }
-        vscode.commands.executeCommand("editor.action.clipboardCutAction")
-        .then(() => {
-//            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection"); // TODO: if enable, delete while line. why? 
-        });
+        kr.cut();
+        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-ring-save", () => {
-        vscode.commands.executeCommand("editor.action.clipboardCopyAction")
-        .then(() => {
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
-        });
+        kr.copy();
+        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-line", () => {
         vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
         .then(() => {
-            vscode.commands.executeCommand("cursorEndSelect")
-        }).then(() => {
-            vscode.commands.executeCommand("cursorRightSelect")
-        }).then(() => {
-            vscode.commands.executeCommand("editor.action.clipboardCutAction");
-        }).then(() => {
-            // vscode.commands.executeCommand(ExtPrefix + ".cancelSelection"); // TODO: 
+            let editor = vscode.window.activeTextEditor;
+            const here = editor.selection.active;
+            const line = editor.document.lineAt(here);
+            console.log(here, line.range.end);
+            if (here.character === line.range.end.character) { // cursor is at end of line areadly.
+                const range = new vscode.Range(here, line.rangeIncludingLineBreak.end);
+                kr.cut(range);        
+            } else {
+                const range = new vscode.Range(here, line.range.end);
+                kr.cut(range);
+            }
         });
     }));
 }
@@ -64,7 +64,9 @@ class KillRing {
                 return false;
             }
         }
-        this.killRing.enqueue(vscode.window.activeTextEditor.document.getText(range));
+        const t = vscode.window.activeTextEditor.document.getText(range);
+        ncp.copy(t);
+        this.killRing.enqueue(t);
         return true
     }
 
@@ -79,14 +81,23 @@ class KillRing {
         return true;
     }
 
-    yank(): number {
-        const c = this.killRing.last();
-        vscode.window.activeTextEditor.edit(editBuilder => {
-            editBuilder.insert(this.getSelection().active, c);
+    yank(){
+        ncp.paste((err, c) => {
+            vscode.window.activeTextEditor.edit(editBuilder => {
+                if (c === null || c.length === 0){
+                    return;
+                }
+                editBuilder.insert(this.getSelection().active, c);
+                vscode.commands.executeCommand('cursorMove', {
+                    'to': 'right',
+                    'by': 'character',
+                    'value': c.length-1,
+                })
+            });
         });
 
         this.isKillRepeated = false;
-        return c.length;
+        return;
     }
 
 
@@ -104,7 +115,7 @@ class KillRing {
     private setSelection(start: vscode.Position, end: vscode.Position): void {
         let editor = vscode.window.activeTextEditor;
         editor.selection = new vscode.Selection(start, end);
-    }    
+    }
 
     private delete(range: vscode.Range = null): Thenable<boolean> {
         if (range === null) {
