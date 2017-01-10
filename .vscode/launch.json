@@ -23,6 +23,27 @@
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/out/test",
             "preLaunchTask": "npm"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Main",
+            "program": "${workspaceRoot}/app.js",
+            "runtimeExecutable": "${execPath}",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "name": "Renderer",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222
         }
-    ]
+    ],
+    "compounds": [{
+        "name": "Main & Renderer",
+        "configurations": ["Main", "Renderer"]
+    }]
 }

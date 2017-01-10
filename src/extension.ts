@@ -5,6 +5,9 @@ import { activateMark } from './mark';
 import { activateKillring } from './killring';
 import { activateText } from './text';
 
+export interface ExtensionInternal {
+}
+
 export function activate(context: vscode.ExtensionContext) {   
     activateMark(context);
     activateKillring(context);

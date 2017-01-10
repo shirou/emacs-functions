@@ -32,7 +32,6 @@ export function activateKillring(context: vscode.ExtensionContext) {
             let editor = vscode.window.activeTextEditor;
             const here = editor.selection.active;
             const line = editor.document.lineAt(here);
-            console.log(here, line.range.end);
             if (here.character === line.range.end.character) { // cursor is at end of line areadly.
                 const range = new vscode.Range(here, line.rangeIncludingLineBreak.end);
                 kr.cut(range);        
@@ -127,6 +126,14 @@ class KillRing {
         }
         return vscode.window.activeTextEditor.edit(editBuilder => {
             editBuilder.delete(range);
+            const d = range.end.line - range.start.line;
+            if (d > 0) {
+                vscode.commands.executeCommand('cursorMove', {
+                    'to': 'up',
+                    'by': 'line',
+                    'value': d,
+                });
+            }
         });
     }
 }
