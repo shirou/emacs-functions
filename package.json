@@ -2,7 +2,7 @@
   "name": "emacs-functions",
   "displayName": "emacs-functions",
   "description": "Emacs basic functions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "rrudi",
   "engines": {
     "vscode": "^1.8.0"
