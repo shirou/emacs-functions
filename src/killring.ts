@@ -126,14 +126,10 @@ class KillRing {
         }
         return vscode.window.activeTextEditor.edit(editBuilder => {
             editBuilder.delete(range);
-            const d = range.end.line - range.start.line;
-            if (d > 0) {
-                vscode.commands.executeCommand('cursorMove', {
-                    'to': 'up',
-                    'by': 'line',
-                    'value': d,
-                });
-            }
+            // move cursor to start position.
+            const newSelection = new vscode.Selection(range.start, range.start);
+            const editor = vscode.window.activeTextEditor;
+            editor.selection = newSelection;
         });
     }
 }

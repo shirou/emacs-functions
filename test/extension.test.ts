@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import sinon = require('sinon');
 
 import * as em from '../src/extension';
+import * as constants from '../src/constants';
 
 import * as util from './util';
 
@@ -22,7 +23,7 @@ suite("killring Tests", () => {
         const s = new vscode.Position(1, 0);
         const e = new vscode.Position(2, 0);
         const newSelection = new vscode.Selection(e, s);
-        util.test("extension.emacs.kill-region", "cut-src.txt", "cut-expected.txt", newSelection)
+        util.test(constants.ExtPrefix + ".kill-region", "cut-src.txt", "cut-expected.txt", newSelection)
         .then(() => {
             const editor = vscode.window.activeTextEditor;
             assert(editor.selection.start.line === 1);
