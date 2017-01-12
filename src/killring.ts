@@ -11,8 +11,8 @@ export function activateKillring(context: vscode.ExtensionContext) {
     let kr = new KillRing()
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
-        kr.yank();
+        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
+        .then(() => kr.yank());
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
         const pos = vscode.window.activeTextEditor.selection;
@@ -86,12 +86,16 @@ class KillRing {
                 if (c === null || c.length === 0){
                     return;
                 }
-                editBuilder.insert(this.getSelection().active, c);
+                const current = this.getSelection().active;
+                editBuilder.insert(current, c);
+                /* does not work. disable currently.
+                // move cursor to last pasted position.
                 vscode.commands.executeCommand('cursorMove', {
-                    'to': 'right',
-                    'by': 'character',
-                    'value': c.length-1,
-                })
+                    'to': 'top',
+                    'by': 'line',
+                    'value': 1,
+                });
+                */
             });
         });
 
