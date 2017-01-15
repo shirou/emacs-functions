@@ -8,7 +8,7 @@ import { RingBuffer } from './RingBuffer';
 var ncp = require("copy-paste");
 
 export function activateKillring(context: vscode.ExtensionContext) {
-    let kr = new KillRing()
+    let kr = new KillRing();
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
         vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
