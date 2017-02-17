@@ -26,10 +26,10 @@ export function activateMark(context: vscode.ExtensionContext) {
 
     // overwrite built-in functions
     supportedCursorMoves.forEach((cursorMove) => {
-       context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + '.' + cursorMove,
-           (context) => vscode.commands.executeCommand(markHandler.isMarkMode() ? cursorMove+"Select": cursorMove)))
+        context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + '.' + cursorMove,
+            () => vscode.commands.executeCommand(markHandler.isMarkMode() ? cursorMove + "Select" : cursorMove)));
     });
-    context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".cancelSelection", (context) => {
+    context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".cancelSelection", () => {
         markHandler.clearMark();
         vscode.commands.executeCommand("cancelSelection");
     }));
@@ -47,23 +47,23 @@ class MarkHandler {
         const here = editor.selection.active;
         this.posit = here;
         editor.selection = new vscode.Selection(here, here);
-   }
+    }
     public mark(pos: vscode.Position) {
         switch (this.state) {
-            //add mark
+            // add mark
             case false:
                 this.posit = pos;
                 this.state = true;
                 // vscode.window.setStatusBarMessage("Mark created at [" + pos.character + "," + pos.line + "]");
                 break;
-            //add point and select to it
+            // add point and select to it
             case true:
                 vscode.window.activeTextEditor.selection = new vscode.Selection(this.posit, pos);
                 this.state = false;
                 break;
         }
     }
-    public dispose(){}
+    public dispose() { }
 }
 
 export function deactivateMark() {

@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 
-import { ExtPrefix, BufferSize } from './constants'; 
+import { ExtPrefix, BufferSize } from './constants';
 
 import { RingBuffer } from './RingBuffer';
 
@@ -12,9 +12,9 @@ export function activateKillring(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
         kr.yank()
-        .then(() => {
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
-        })
+            .then(() => {
+                vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+            });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
         const pos = vscode.window.activeTextEditor.selection;
@@ -22,30 +22,30 @@ export function activateKillring(context: vscode.ExtensionContext) {
             return;
         }
         kr.cut()
-        .then( ()=>{
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
-        });
+            .then(() => {
+                vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+            });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-ring-save", () => {
         kr.copy()
-        .then(() => {
-            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
-        })
+            .then(() => {
+                vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+            });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-line", () => {
         vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
-        .then(() => {
-            let editor = vscode.window.activeTextEditor;
-            const here = editor.selection.active;
-            const line = editor.document.lineAt(here);
-            if (here.character === line.range.end.character) { // cursor is at end of line areadly.
-                const range = new vscode.Range(here, line.rangeIncludingLineBreak.end);
-                kr.cut(range);        
-            } else {
-                const range = new vscode.Range(here, line.range.end);
-                kr.cut(range);
-            }
-        });
+            .then(() => {
+                let editor = vscode.window.activeTextEditor;
+                const here = editor.selection.active;
+                const line = editor.document.lineAt(here);
+                if (here.character === line.range.end.character) { // cursor is at end of line areadly.
+                    const range = new vscode.Range(here, line.rangeIncludingLineBreak.end);
+                    kr.cut(range);
+                } else {
+                    const range = new vscode.Range(here, line.range.end);
+                    kr.cut(range);
+                }
+            });
     }));
 }
 
@@ -55,7 +55,7 @@ class KillRing {
     private isKillRepeated: boolean;
 
     constructor() {
-        this.killRing = new RingBuffer(BufferSize); 
+        this.killRing = new RingBuffer(BufferSize);
         this.isKillRepeated = false;
         vscode.window.onDidChangeTextEditorSelection(() => {
             this.isKillRepeated = false;
@@ -78,9 +78,9 @@ class KillRing {
         });
     }
 
-    cut(range: vscode.Range = null): Thenable<boolean>  {
+    cut(range: vscode.Range = null): Thenable<boolean> {
         return new Promise((resolve) => {
-            if (range === null){
+            if (range === null) {
                 range = this.getSelectionRange();
             }
             if (!this.copy(range)) {
@@ -97,7 +97,7 @@ class KillRing {
             ncp.paste((err, c) => {
                 const s = this.getSelection();
                 vscode.window.activeTextEditor.edit(editBuilder => {
-                    if (c === null || c.length === 0){
+                    if (c === null || c.length === 0) {
                         resolve();
                         return;
                     }
@@ -107,7 +107,7 @@ class KillRing {
                     this.setSelection(p, p);
                     resolve();
                 });
-            })
+            });
             this.isKillRepeated = false;
         });
     }
