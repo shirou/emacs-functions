@@ -2,7 +2,7 @@
   "name": "emacs-functions",
   "displayName": "emacs-functions",
   "description": "Emacs basic functions",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "publisher": "rrudi",
   "engines": {
     "vscode": "^1.8.0"
@@ -37,7 +37,6 @@
     "type": "git",
     "url": "https://github.com/shirou/emacs-functions.git"
   },
-  "preview": true,
   "contributes": {
     "commands": [
       {
