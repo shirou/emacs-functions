@@ -11,20 +11,26 @@ export function activateKillring(context: vscode.ExtensionContext) {
     let kr = new KillRing();
 
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".yank", () => {
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
-        .then(() => kr.yank());
+        kr.yank()
+        .then(() => {
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        })
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-region", () => {
         const pos = vscode.window.activeTextEditor.selection;
         if (pos.isEmpty) {
             return;
         }
-        kr.cut();
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        kr.cut()
+        .then( ()=>{
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        });
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-ring-save", () => {
-        kr.copy();
-        vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        kr.copy()
+        .then(() => {
+            vscode.commands.executeCommand(ExtPrefix + ".cancelSelection");
+        })
     }));
     context.subscriptions.push(vscode.commands.registerCommand(ExtPrefix + ".kill-line", () => {
         vscode.commands.executeCommand(ExtPrefix + ".cancelSelection")
@@ -56,53 +62,55 @@ class KillRing {
         });
     }
 
-    copy(range: vscode.Range = null): boolean {
-        if (range === null) {
-            range = this.getSelectionRange();
+    copy(range: vscode.Range = null): Thenable<boolean> {
+        return new Promise((resolve) => {
             if (range === null) {
-                return false;
-            }
-        }
-        const t = vscode.window.activeTextEditor.document.getText(range);
-        ncp.copy(t);
-        this.killRing.enqueue(t);
-        return true
-    }
-
-    cut(range: vscode.Range = null): boolean { 
-        if (range === null){
-            range = this.getSelectionRange();
-        } 
-        if (!this.copy(range)) {
-            return false;
-        }
-        this.delete(range);
-        return true;
-    }
-
-    yank(){
-        ncp.paste((err, c) => {
-            vscode.window.activeTextEditor.edit(editBuilder => {
-                if (c === null || c.length === 0){
+                range = this.getSelectionRange();
+                if (range === null) {
+                    resolve(false);
                     return;
                 }
-                const current = this.getSelection().active;
-                editBuilder.insert(current, c);
-                /* does not work. disable currently.
-                // move cursor to last pasted position.
-                vscode.commands.executeCommand('cursorMove', {
-                    'to': 'top',
-                    'by': 'line',
-                    'value': 1,
-                });
-                */
-            });
+            }
+            const t = vscode.window.activeTextEditor.document.getText(range);
+            ncp.copy(t);
+            this.killRing.enqueue(t);
+            resolve(true);
         });
-
-        this.isKillRepeated = false;
-        return;
     }
 
+    cut(range: vscode.Range = null): Thenable<boolean>  {
+        return new Promise((resolve) => {
+            if (range === null){
+                range = this.getSelectionRange();
+            }
+            if (!this.copy(range)) {
+                resolve(false);
+                return;
+            }
+            this.delete(range);
+            resolve(true);
+        });
+    }
+
+    yank(): Thenable<string> {
+        return new Promise((resolve) => {
+            ncp.paste((err, c) => {
+                const s = this.getSelection();
+                vscode.window.activeTextEditor.edit(editBuilder => {
+                    if (c === null || c.length === 0){
+                        resolve();
+                        return;
+                    }
+                    editBuilder.replace(s, c);
+                }).then(() => {
+                    const p = s.end.translate(0, c.length);
+                    this.setSelection(p, p);
+                    resolve();
+                });
+            })
+            this.isKillRepeated = false;
+        });
+    }
 
     private getSelectionRange(): vscode.Range {
         const selection = vscode.window.activeTextEditor.selection,

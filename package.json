@@ -496,6 +496,11 @@
 	  },
 	  {
 		"key": "ctrl+g",
+		"command": "workbench.action.closeQuickOpen",
+		"when": "inQuickOpen"
+	  },
+	  {
+		"key": "ctrl+g",
 		"command": "hideSuggestWidget",
 		"when": "editorTextFocus && suggestWidgetVisible"
 	  },
